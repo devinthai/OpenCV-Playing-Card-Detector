@@ -5,6 +5,10 @@
 # Description: Functions and classes for CardDetector.py that perform 
 # various steps of the card detection algorithm
 
+# Editor: Devin Thai
+# Date: 7/19/18
+# Description: v2 of the Cards.py utilizes the fact that the 5 largest areas
+# are typically the only cards on display in the casino.
 
 # Import necessary packages
 import numpy as np
@@ -156,7 +160,8 @@ def find_cards(thresh_image):
     # following criteria: 1) Smaller area than the maximum card size,
     # 2), bigger area than the minimum card size, 3) have no parents,
     # and 4) have four corners
-
+    
+    """ 
     for i in range(len(cnts_sort)):
         size = cv2.contourArea(cnts_sort[i])
         peri = cv2.arcLength(cnts_sort[i],True)
@@ -165,7 +170,17 @@ def find_cards(thresh_image):
         if ((size < CARD_MAX_AREA) and (size > CARD_MIN_AREA)
             and (hier_sort[i][3] == -1) and (len(approx) == 4)):
             cnt_is_card[i] = 1
-
+    """
+    
+    # Attempt to find the cards by simply taking the contours with the 5 
+    # highest areas.
+    
+    for i in range(5):
+        size = cv2.contourArea(cnts_sort[i])
+        
+        if (size < CARD_MAX_AREA) and (size > CARD_MIN_AREA):
+            cnt_is_card[i] = 1
+        
     return cnts_sort, cnt_is_card
 
 def preprocess_card(contour, image):
