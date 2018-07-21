@@ -81,6 +81,7 @@ Link I'm currently working with:
 https://stackoverflow.com/questions/35097837/capture-video-data-from-screen-in-python
 https://stackoverflow.com/questions/46629878/image-capture-the-center-of-the-screen-using-python
 https://stackoverflow.com/questions/11122291/python-find-char-in-string-can-i-get-all-indexes
+http://briancaffey.github.io/2018/01/02/checking-poker-hands-with-python.html
 
 
 Notes:
